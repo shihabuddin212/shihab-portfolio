@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import { Github, Linkedin, Mail, Phone, Download, ArrowRight } from "lucide-react";
+import { Mail, Phone, ArrowRight } from "lucide-react";
 
 const stats = [
   { value: "3+", label: "Years Experience" },
@@ -42,17 +42,19 @@ export default function Hero() {
                 href="https://github.com/shihabuddin212"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="GitHub"
                 className="w-10 h-10 bg-slate-800 hover:bg-blue-600 border border-slate-700 hover:border-blue-500 rounded-lg flex items-center justify-center transition-all duration-200"
               >
-                <Github size={18} className="text-slate-300" />
+                <span aria-hidden="true" className="text-xs font-bold text-slate-300">GH</span>
               </a>
               <a
                 href="https://linkedin.com/in/shihab-uddin-898529252"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="LinkedIn"
                 className="w-10 h-10 bg-slate-800 hover:bg-blue-600 border border-slate-700 hover:border-blue-500 rounded-lg flex items-center justify-center transition-all duration-200"
               >
-                <Linkedin size={18} className="text-slate-300" />
+                <span aria-hidden="true" className="text-sm font-bold text-slate-300">in</span>
               </a>
               <a
                 href="mailto:mshihab141@gmail.com"
@@ -77,11 +79,10 @@ export default function Hero() {
                 Get In Touch <ArrowRight size={16} />
               </a>
               <a
-                href="/IT & Network_Support_Engineer-Shihab.pdf"
-                download
+                href="mailto:mshihab141@gmail.com?subject=Request%20for%20CV"
                 className="inline-flex items-center gap-2 bg-transparent border border-slate-600 hover:border-blue-500 text-slate-300 hover:text-white font-semibold px-6 py-3 rounded-xl transition-all duration-200"
               >
-                <Download size={16} /> Download CV
+                <Mail size={16} /> Request CV
               </a>
             </div>
 
@@ -104,8 +105,8 @@ export default function Hero() {
               {/* Photo Container */}
               <div className="relative w-72 h-72 lg:w-80 lg:h-80 rounded-full overflow-hidden border-4 border-blue-500/30 shadow-2xl shadow-blue-500/20">
                 <Image
-                  src="/profile.png"
-                  alt="Md Shihab Uddin Munsi"
+                  src="/profile.svg"
+                  alt="SM initials placeholder for Md Shihab Uddin Munsi"
                   fill
                   className="object-cover object-top"
                   priority

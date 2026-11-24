@@ -1,36 +1,54 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Shihab Portfolio
 
-## Getting Started
+A single-page portfolio built with Next.js, React, TypeScript, and Tailwind CSS.
 
-First, run the development server:
+## Run locally
 
 ```bash
+npm ci
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Production build
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm ci
+npm run build
+npm run start
+```
 
-## Learn More
+The app listens on port `3000` by default. To choose another port, run `npm run start -- -p 3001`.
 
-To learn more about Next.js, take a look at the following resources:
+## Deploy to a VPS
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+This app runs as a Node.js server. Use a supported Node.js LTS release (20.9 or newer) and put Nginx in front of the app as a reverse proxy.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. Install Git, Node.js, Nginx, and PM2 on the VPS.
+2. Clone the repository and build it:
 
-## Deploy on Vercel
+   ```bash
+   git clone https://github.com/shihabuddin212/shihab-portfolio.git
+   cd shihab-portfolio
+   npm ci
+   npm run build
+   ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+3. Start the production server with PM2 and save its process list:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+   ```bash
+   pm2 start npm --name shihab-portfolio -- start
+   pm2 save
+   pm2 startup
+   ```
+
+   Follow the command printed by `pm2 startup` so the app starts after a VPS reboot.
+
+4. Configure the Nginx site for your domain to proxy requests to `http://127.0.0.1:3000`, then enable HTTPS with your certificate provider.
+
+To deploy updates, run `git pull origin main`, `npm ci`, `npm run build`, then `pm2 restart shihab-portfolio`.
+
+## Portfolio content
+
+The page content is currently maintained in the components under `components/`. Admin-managed dynamic content is not included yet; the current setup keeps the single-page site simple to deploy and can be extended later.

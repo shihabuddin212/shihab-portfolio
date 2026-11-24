@@ -1,5 +1,5 @@
 "use client";
-import { ExternalLink, Github } from "lucide-react";
+import { ExternalLink } from "lucide-react";
 
 const projects = [
   {
@@ -125,7 +125,7 @@ export default function Projects() {
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-1.5 text-slate-400 hover:text-white text-sm transition-colors"
                 >
-                  <Github size={14} /> GitHub
+                  GitHub
                 </a>
                 {project.live && (
                   <a
@@ -150,7 +150,7 @@ export default function Projects() {
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 border border-blue-500/40 text-blue-400 hover:bg-blue-500/10 hover:text-blue-300 font-semibold px-6 py-3 rounded-xl transition-all duration-200"
           >
-            <Github size={16} /> View All on GitHub
+            View All on GitHub
           </a>
         </div>
       </div>
